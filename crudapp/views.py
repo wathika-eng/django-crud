@@ -12,11 +12,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+
 def home(request):
     return render(request, "crudapp/index.html")
 
 
-@csrf_exempt
 def register(request):
     form = CreateUserForm()
     if request.method == "POST":
@@ -24,14 +24,13 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Account created successfully")
-            return redirect('login')
-    context = {'form': form}
+            return redirect("login")
+    context = {"form": form}
     return render(request, "crudapp/register.html", context)
 
 
-@csrf_exempt
 def my_login(request):
-    user_json = 'anonymous'
+    user_json = "anonymous"
     form = LoginForm()
 
     if request.method == "POST":
@@ -51,27 +50,25 @@ def my_login(request):
                 messages.warning(request, "Invalid username or password")
             user_json = json.dumps(user)
 
-    context = {'form': form, 'user': user_json}
+    context = {"form": form, "user": user_json}
 
     return render(request, "crudapp/login.html", context=context)
 
 
-@csrf_exempt
 def my_logout(request):
     auth.logout(request)
     messages.success(request, "Logged out successfully")
-    return redirect('login')
+    return redirect("login")
 
 
-@login_required(login_url='login')
+@login_required(login_url="login")
 def dashboard(request):
     my_records = Record.objects.all()
-    context = {'records': my_records}
+    context = {"records": my_records}
     return render(request, "crudapp/dashboard.html", context=context)
 
 
-@csrf_exempt
-@login_required(login_url='login')
+@login_required(login_url="login")
 def create_record(request):
     form = CreateRecordForm()
 
@@ -81,14 +78,13 @@ def create_record(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Record created successfully")
-            return redirect('dashboard')
-    context = {'form': form}
+            return redirect("dashboard")
+    context = {"form": form}
 
     return render(request, "crudapp/create_record.html", context=context)
 
 
-@csrf_exempt
-@login_required(login_url='login')
+@login_required(login_url="login")
 def update_record(request, pk):
     record = Record.objects.get(id=pk)
     form = UpdateRecordForm(instance=record)
@@ -98,19 +94,17 @@ def update_record(request, pk):
             form.save()
             messages.success(request, "Record updated successfully")
             return redirect("dashboard")
-    context = {'form': form}
+    context = {"form": form}
     return render(request, "crudapp/update_record.html", context=context)
 
 
-@csrf_exempt
-@login_required(login_url='login')
+@login_required(login_url="login")
 def single_record(request, pk):
     all_records = Record.objects.get(id=pk)
-    context = {'record': all_records}
+    context = {"record": all_records}
     return render(request, "crudapp/view_record.html", context=context)
 
 
-@csrf_exempt
 def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     record.delete()

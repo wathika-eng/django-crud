@@ -9,7 +9,7 @@ from .models import Record
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ["username", "password1", "password2"]
 
 
 class LoginForm(forms.Form):
@@ -20,10 +20,10 @@ class LoginForm(forms.Form):
 class CreateRecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ["first_name", "last_name", "email", "phone_number"]
 
 
 class UpdateRecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ["first_name", "last_name", "email", "phone_number"]
