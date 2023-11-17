@@ -1,0 +1,11 @@
+{% extends "crudapp/base.html" %}
+
+{% block title %}
+Welcome
+{% endblock %}
+{% block content %}
+<div class="text-center">
+<h1>Manage students grades</h1>
+<a class="btn btn-outline-primary" id="btn-reg" href="{% url 'register' %}">Enter here! <i class="bi bi-box-arrow-in-right"></i></a>
+</div>
+{% endblock %}

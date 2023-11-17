@@ -1,0 +1,34 @@
+*
+{
+  box-sizing: border-box;
+   scroll-behavior: smooth;
+}
+
+#btn-reg
+{
+   transition: 0.9s all ease-in-out!important;
+}
+
+#btn-reg
+{
+    transform: scale(1.5)!important;
+}
+
+#mm
+{
+  position: absolute;
+  right: 0;
+}
+
+#showPasswordBtn{
+    top: 44%!important;
+    position: absolute!important;
+    right: 51%!important;
+    cursor: pointer!important;
+}
+
+.form-layout
+{
+    border-radius: 15px;
+    width: 500px;
+}
