@@ -27,7 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
-
+CSRF_TRUSTED_ORIGINS = ["https://django-crud-183w.onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
