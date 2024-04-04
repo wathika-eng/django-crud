@@ -61,7 +61,7 @@ def my_logout(request):
     return redirect("login")
 
 
-@login_required(login_url="login")
+# @login_required(login_url="login")
 def dashboard(request):
     my_records = Record.objects.all()
     context = {"records": my_records}
@@ -105,6 +105,7 @@ def single_record(request, pk):
     return render(request, "crudapp/view_record.html", context=context)
 
 
+@login_required(login_url="login")
 def delete_record(request, pk):
     record = Record.objects.get(id=pk)
     record.delete()
