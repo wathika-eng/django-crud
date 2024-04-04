@@ -12,3 +12,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 wheel==0.41.3
 uvicorn==0.28.0
+gunicorn==21.2.0
